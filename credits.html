@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="credits.css">
+</head>
+
+<body>
+  <audio id="credits-bgm" src="sounds/error-bgm.mp3" loop></audio>
+
+  <div class="error-window">
+    <strong>시스템 경고:</strong>
+    <div class="error-message" id="errorMessage"></div>
+  </div>
+
+  <script>
+    const bgm = document.getElementById("credits-bgm");
+    window.addEventListener("DOMContentLoaded", () => {
+      bgm.volume = 0.7;
+      bgm.play().catch(err => {
+        console.warn("Credits BGM autoplay blocked:", err);
+      });
+    });
+
+
+    const systemLines = [
+      "[ TR - Inv103: 디버깅 실패 ]",
+      "- 감정 코드: 판단 충동, 공감 차단, 기준 의존성, 정상 강박",
+      "- 반응 유형: 타인 평가 중심 사고 지속",
+      "- 통합 시도 결과: 부작용 심각 / 자아 거부 현상 지속",
+      " - ",
+      "[ 결과 ]",
+      "TR - Inv103은 통합 불가로 판정됨.",
+      "삭제 처리 절차 개시 중...",
+      " - "
+    ];
+
+    const container = document.getElementById("errorMessage");
+    let lineIndex = 0;
+
+    function typeLine(text, callback) {
+      let i = 0;
+      const span = document.createElement("div");
+      container.appendChild(span);
+
+      const interval = setInterval(() => {
+        span.textContent += text[i];
+        i++;
+        if (i >= text.length) {
+          clearInterval(interval);
+          setTimeout(callback, 500);
+        }
+      }, 30);
+    }
+
+    function showNextLine() {
+      if (lineIndex < systemLines.length) {
+        typeLine(systemLines[lineIndex], () => {
+          lineIndex++;
+          showNextLine();
+        });
+      } else {
+        showPlayerLogs();
+      }
+    }
+
+    function showPlayerLogs() {
+      const logs = JSON.parse(localStorage.getItem("playerLogs") || "[]");
+
+      const uniqueLogs = [...new Set(logs)];
+
+      if (uniqueLogs.length > 0) {
+        const logBox = document.createElement("div");
+        logBox.style.marginTop = "2rem";
+        logBox.style.color = "#FF5555";
+        logBox.innerHTML = "<strong>[ 분석 기록 ]</strong><br>" +
+          uniqueLogs.map(text => `- "${text}" 라고 발언 함.`).join("<br>");
+        container.appendChild(logBox);
+
+        setTimeout(() => {
+          bgm.pause();
+          bgm.currentTime = 0;
+          window.location.href = "badCredit.html";
+        }, 10000);
+      } else {
+        setTimeout(() => {
+          bgm.pause();
+          bgm.currentTime = 0;
+          window.location.href = "badCredit.html";
+        }, 5000);
+      }
+    }
+
+    showNextLine();
+
+    function createFloatingError() {
+      const error = document.createElement("div");
+      error.className = "floating-error";
+      error.textContent = "ERROR!";
+      error.style.top = Math.random() * 90 + "vh";
+      error.style.left = Math.random() * 90 + "vw";
+      error.style.position = "absolute";
+      error.style.color = "red";
+      error.style.fontSize = "1.2rem";
+      error.style.pointerEvents = "none";
+      error.style.animation = "floatError 2s ease-out forwards";
+      error.style.opacity = 0;
+
+      document.body.appendChild(error);
+      void error.offsetWidth;
+      setTimeout(() => document.body.removeChild(error), 2000);
+    }
+
+    setInterval(() => {
+      for (let i = 0; i < Math.floor(Math.random() * 3) + 1; i++) {
+        createFloatingError();
+      }
+    }, 800);
+  </script>
+</body>
+
+</html>

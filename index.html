@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div id="background">
+
+    <div id="intro-container">
+      <div id="intro-inner">
+        <img id="intro-image" src="" alt="intro">
+        <div id="intro-caption"></div>
+      </div>
+    </div>
+
+    <div id="start-screen" style="display: none;">
+      <h1 id="game-title">디버깅 프로토콜: 정상으로부터의 이탈</h1>
+      <button id="start-button">게임 시작</button>
+    </div>
+
+    <div class="npc-box">
+      <div class="npc-text" id="npc-text"></div>
+    </div>
+
+    <div class="player-box">
+      <div class="player-text" id="player-text"></div>
+    </div>
+
+    <div class="choice-box" id="choice-box">
+      <div class="choice-button" id="choice1"></div>
+      <div class="choice-button" id="choice2"></div>
+    </div>
+
+    <div class="system-box" style="display: none;">
+      <p id="system-text"></p>
+    </div>
+
+    <img id="popup-button" src="img/popup_button.png" alt="버튼">
+    <img id="popup-image" src="img/error_popup.png" alt="팝업">
+
+    <div id="ending-container" style="display: none;">
+      <div id="ending-inner">
+        <img id="ending-image" src="" />
+        <div id="ending-caption"></div>
+      </div>
+    </div>
+
+    <div id="fade" class="fade-screen"></div>
+
+    <button id="next-button" style="display: none;" class="next-button">→</button>
+  </div>
+
+  <audio id="intro-bgm" src="sounds/intro-bgm.mp3" loop></audio>
+
+  <script src="intro.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('./fonts/Galmuri11.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Galmuri11'
+}
+
+body {
+  font-family: 'Galmuri11';
+  margin: 0;
+  background-color: black;
+  color: #39FF14;
+  overflow: hidden;
+}
+
+.error-window {
+  position: absolute;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #111;
+  color: #FF5555;
+  padding: 2rem;
+  border: 0.125rem solid #FF0000;
+  font-size: 1.2rem;
+  width: 85vw;
+  max-width: 37.5rem;
+  text-align: left;
+  z-index: 10;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  white-space: pre-line;
+}
+
+.floating-error {
+  position: absolute;
+  animation: floatError 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes floatError {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateY(-1.875rem);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-2.5rem);
+  }
+}

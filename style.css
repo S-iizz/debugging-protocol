@@ -1,0 +1,273 @@
+@font-face {
+  font-family: 'Galmuri11';
+  src: url('./fonts/Galmuri11.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Galmuri11'
+}
+
+html,
+body {
+  font-family: 'Galmuri11';
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+#background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("img/NPC1_D1_1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  position: relative;
+}
+
+#intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#intro-image {
+  width: 40rem;
+  max-width: 90vw;
+  image-rendering: pixelated;
+}
+
+#intro-caption {
+  color: #82C6EE;
+  font-size: 1.8rem;
+  margin-top: 5rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.npc-box {
+  position: absolute;
+  width: 50vw;
+  min-height: 15vh;
+  max-height: 20vh;
+  bottom: 30vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  background: rgba(18, 31, 41, 0.9);
+  padding: 1.5rem 2rem;
+  border: 0.2rem solid #82C6EE;
+  color: #BFDEF0;
+  text-align: left;
+}
+
+.npc-text {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.player-box {
+  position: absolute;
+  min-width: 30vw;
+  min-height: 8vh;
+  max-height: 18vh;
+  bottom: 8vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  background: #CFE3E3;
+  padding: 0;
+  border: 0.2rem solid #050505;
+  border-radius: 6vh;
+  color: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.player-text {
+  padding: 1.5rem 1.5rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.npc-box,
+.player-box {
+  display: none;
+}
+
+.choice-box {
+  position: absolute;
+  bottom: 30vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.choice-button {
+  padding: 2vh 3vw;
+  background-color: rgba(18, 31, 41, 0.9);
+  border: 0.2vh solid #82C6EE;
+  font-size: 1.4rem;
+  cursor: pointer;
+  min-width: 50vw;
+  min-height: 8vh;
+  color: #BFDEF0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.fade-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 999;
+}
+
+.next-button {
+  position: absolute;
+  bottom: 10vh;
+  right: 10vw;
+  padding: 1.5vh 3vw;
+  font-size: 1.2rem;
+  background-color: #121f29;
+  color: #BFDEF0;
+  border: 0.2rem solid #82C6EE;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.system-box {
+  position: absolute;
+  bottom: 40vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  background-color: black;
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  border: 0.2rem solid rgb(243, 0, 255);
+  font-weight: bold;
+  color: rgb(175, 0, 0);
+  display: none;
+  z-index: 10;
+}
+
+#popup-button {
+  position: absolute;
+  top: 2vh;
+  right: 8vw;
+  width: 10vw;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#popup-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 20;
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+#ending-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#ending-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#ending-image {
+  width: 40rem;
+  max-width: 90vw;
+  image-rendering: pixelated;
+}
+
+#ending-caption {
+  color: #82C6EE;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+
+#start-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: white;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#game-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+#start-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #111;
+  color: #82C6EE;
+  border: 0.07rem solid #82C6EE;
+  cursor: pointer;
+}
